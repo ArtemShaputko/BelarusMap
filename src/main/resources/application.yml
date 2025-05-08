@@ -1,0 +1,557 @@
+spring:
+  application:
+    name: belarus_map
+  config:
+    import: optional:secrets.properties[.properties]
+logging:
+  file:
+    name: /home/raspberry/belarus/logs/logs.log
+api:
+  key: ${API_KEY}
+  url: "https://api.openweathermap.org/data/2.5/weather?lat=%f&lon=%f&appid=%s"
+
+strip:
+  first:
+    brightness: 64
+    pin: 18
+    pixels: 60
+  second:
+    brightness: 64
+    pin: 5
+    pixels: 34
+
+i2c:
+  address:
+    multiplexer: 0x70
+    display: 0x3C
+
+cities:
+  list:
+    - name: Антополь
+      latitude: 52.2000
+      longitude: 24.7833
+    - name: Барановичи
+      latitude: 53.1325
+      longitude: 25.9919
+    - name: Бегомль
+      latitude: 54.7333
+      longitude: 28.0667
+    - name: Белоозёрск
+      latitude: 52.4667
+      longitude: 25.1833
+    - name: Белыничи
+      latitude: 53.9986
+      longitude: 29.7083
+    - name: Березино
+      latitude: 53.8333
+      longitude: 28.9833
+    - name: Берёза
+      latitude: 52.5333
+      longitude: 24.9833
+    - name: Бешенковичи
+      latitude: 55.0500
+      longitude: 29.4667
+    - name: Бобр
+      latitude: 54.3333
+      longitude: 29.2667
+    - name: Бобруйск
+      latitude: 53.1500
+      longitude: 29.2333
+    - name: Большая Берестовица
+      latitude: 53.1944
+      longitude: 24.0167
+    - name: Борисов
+      latitude: 54.2333
+      longitude: 28.5000
+    - name: Боровляны
+      latitude: 53.9833
+      longitude: 27.6667
+    - name: Брагин
+      latitude: 51.7833
+      longitude: 30.2667
+    - name: Браслав
+      latitude: 55.6333
+      longitude: 27.0500
+    - name: Брест
+      latitude: 52.0975
+      longitude: 23.6877
+      central: true
+      pin-num: 32
+    - name: Буда-Кошелёво
+      latitude: 52.7167
+      longitude: 30.5667
+    - name: Быхов
+      latitude: 53.5167
+      longitude: 30.2500
+    - name: Василевичи
+      latitude: 52.2500
+      longitude: 29.8333
+    - name: Верхнедвинск
+      latitude: 55.7667
+      longitude: 27.9333
+    - name: Ветка
+      latitude: 52.5667
+      longitude: 31.1833
+    - name: Видзы
+      latitude: 55.4000
+      longitude: 26.6333
+    - name: Вилейка
+      latitude: 54.4833
+      longitude: 26.9167
+    - name: Витебск
+      latitude: 55.1833
+      longitude: 30.1667
+      central: true
+      pin-num: 43
+    - name: Волковыск
+      latitude: 53.1667
+      longitude: 24.4667
+    - name: Воложин
+      latitude: 54.0833
+      longitude: 26.5333
+    - name: Вороново
+      latitude: 54.1500
+      longitude: 25.3167
+    - name: Высокое
+      latitude: 52.3667
+      longitude: 23.3667
+    - name: Ганцевичи
+      latitude: 52.7667
+      longitude: 26.4333
+    - name: Глубокое
+      latitude: 55.1333
+      longitude: 27.6833
+    - name: Глуск
+      latitude: 52.9000
+      longitude: 28.6833
+    - name: Гомель
+      latitude: 52.4417
+      longitude: 30.9833
+      central: true
+      pin-num: 7
+    - name: Горки
+      latitude: 54.2833
+      longitude: 30.9833
+    - name: Городея
+      latitude: 53.3167
+      longitude: 26.5333
+    - name: Городище
+      latitude: 53.3167
+      longitude: 26.0000
+    - name: Городок
+      latitude: 55.4667
+      longitude: 30.0000
+    - name: Гродно
+      latitude: 53.6667
+      longitude: 23.8167
+      central: true
+      pin-num: 35
+    - name: Давид-Городок
+      latitude: 52.0500
+      longitude: 27.2167
+    - name: Дзержинск
+      latitude: 53.6833
+      longitude: 27.1333
+    - name: Дисна
+      latitude: 55.5667
+      longitude: 28.2167
+    - name: Добруш
+      latitude: 52.4094
+      longitude: 31.3228
+      pin-num: 10
+    - name: Докшицы
+      latitude: 54.9000
+      longitude: 27.7667
+    - name: Дрибин
+      latitude: 54.1167
+      longitude: 31.0833
+    - name: Дрогичин
+      latitude: 52.1833
+      longitude: 25.1500
+    - name: Друя
+      latitude: 55.7833
+      longitude: 27.4500
+    - name: Дубровно
+      latitude: 54.5667
+      longitude: 30.6833
+    - name: Дятлово
+      latitude: 53.4667
+      longitude: 25.4000
+    - name: Езерище
+      latitude: 55.8333
+      longitude: 28.0167
+    - name: Ельск
+      latitude: 51.8167
+      longitude: 29.1500
+      pin-num: 14
+    - name: Жабинка
+      latitude: 52.2000
+      longitude: 24.0167
+    - name: Житковичи
+      latitude: 52.2167
+      longitude: 27.8667
+    - name: Жлобин
+      latitude: 52.9000
+      longitude: 30.0333
+    - name: Жодино
+      latitude: 54.1000
+      longitude: 28.3333
+    - name: Заславль
+      latitude: 54.0000
+      longitude: 27.2833
+    - name: Зельва
+      latitude: 53.1500
+      longitude: 24.8167
+    - name: Иваново
+      latitude: 52.1333
+      longitude: 25.5333
+    - name: Ивацевичи
+      latitude: 52.7167
+      longitude: 25.3333
+    - name: Ивенец
+      latitude: 53.8833
+      longitude: 26.7500
+    - name: Ивье
+      latitude: 54.7167
+      longitude: 25.7833
+    - name: Калинковичи
+      latitude: 52.1333
+      longitude: 29.3333
+      pin-num: 5
+    - name: Каменец
+      latitude: 52.4000
+      longitude: 23.8167
+    - name: Кировск
+      latitude: 53.2667
+      longitude: 29.4667
+    - name: Клецк
+      latitude: 53.0667
+      longitude: 26.6333
+      
+    - name: Климовичи
+      latitude: 53.6167
+      longitude: 31.9500
+    - name: Кличев
+      latitude: 53.4833
+      longitude: 29.3500
+      
+    - name: Кобрин
+      latitude: 52.2167
+      longitude: 24.3667
+    - name: Козловщина
+      latitude: 53.3333
+      longitude: 25.8167
+      
+    - name: Копыль
+      latitude: 53.1500
+      longitude: 27.1000
+    - name: Кореличи
+      latitude: 53.5667
+      longitude: 26.1333
+      
+    - name: Корма
+      latitude: 53.1333
+      longitude: 30.8000
+      pin-num: 3
+    - name: Коссово
+      latitude: 52.7667
+      longitude: 25.1500
+      
+    - name: Костюковичи
+      latitude: 53.3500
+      longitude: 32.0500
+    - name: Краснополье
+      latitude: 53.3333
+      longitude: 31.4000
+      
+    - name: Кривичи
+      latitude: 54.7167
+      longitude: 27.2833
+      
+    - name: Кричев
+      latitude: 53.7167
+      longitude: 31.7167
+      
+    - name: Круглое
+      latitude: 54.2500
+      longitude: 29.8000
+      
+    - name: Крупки
+      latitude: 54.3167
+      longitude: 29.1333
+      
+    - name: Лельчицы
+      latitude: 51.7833
+      longitude: 28.3333
+      
+    - name: Лепель
+      latitude: 54.8833
+      longitude: 28.7000
+      
+    - name: Лида
+      latitude: 53.8833
+      longitude: 25.3000
+      
+    - name: Лиозно
+      latitude: 55.0167
+      longitude: 30.8000
+      
+    - name: Логишин
+      latitude: 52.3333
+      longitude: 25.9833
+      
+    - name: Логойск
+      latitude: 54.2000
+      longitude: 27.8500
+      
+    - name: Лоев
+      latitude: 51.9333
+      longitude: 30.8000
+      
+    - name: Лунинец
+      latitude: 52.2500
+      longitude: 26.8000
+      
+    - name: Любань
+      latitude: 52.8000
+      longitude: 28.0000
+      
+    - name: Любча
+      latitude: 53.7500
+      longitude: 26.0667
+      
+    - name: Ляховичи
+      latitude: 53.0333
+      longitude: 26.2667
+      
+    - name: Малорита
+      latitude: 51.8000
+      longitude: 24.0833
+      
+    - name: Марьина Горка
+      latitude: 53.5000
+      longitude: 28.1500
+      
+    - name: Минск
+      latitude: 53.9000
+      longitude: 27.5667
+      central: true
+      pin-num: 50
+    - name: Миоры
+      latitude: 55.6167
+      longitude: 27.6167
+      
+    - name: Мир
+      latitude: 53.4500
+      longitude: 26.4667
+      
+    - name: Могилёв
+      latitude: 53.9000
+      longitude: 30.3333
+      central: true
+      pin-num: 49
+    - name: Мозырь
+      latitude: 52.0500
+      longitude: 29.2500
+    - name: Молодечно
+      latitude: 54.3167
+      longitude: 26.8500
+    - name: Мосты
+      latitude: 53.4000
+      longitude: 24.5333
+    - name: Мстиславль
+      latitude: 54.0167
+      longitude: 31.7333
+    - name: Мядель
+      latitude: 54.8833
+      longitude: 26.9333
+    - name: Наровля
+      latitude: 51.8000
+      longitude: 29.5000
+    - name: Негорелое
+      latitude: 53.6000
+      longitude: 27.0667
+    - name: Несвиж
+      latitude: 53.2167
+      longitude: 26.6833
+    - name: Новогрудок
+      latitude: 53.6000
+      longitude: 25.8333
+    - name: Новолукомль
+      latitude: 54.6667
+      longitude: 29.1500
+    - name: Новополоцк
+      latitude: 55.5333
+      longitude: 28.6500
+    - name: Озаричи
+      latitude: 52.5333
+      longitude: 29.2500
+    - name: Октябрьский
+      latitude: 52.6333
+      longitude: 29.2167
+    - name: Орша
+      latitude: 54.5000
+      longitude: 30.4167
+    - name: Осиповичи
+      latitude: 53.3000
+      longitude: 28.6333
+    - name: Островец
+      latitude: 54.6167
+      longitude: 25.9500
+    - name: Ошмяны
+      latitude: 54.4167
+      longitude: 25.9333
+      
+    - name: Петриков
+      latitude: 52.1333
+      longitude: 28.5000
+      
+    - name: Пинск
+      latitude: 52.1167
+      longitude: 26.1000
+      
+    - name: Плещеницы
+      latitude: 54.4167
+      longitude: 27.8333
+      
+    - name: Полоцк
+      latitude: 55.4833
+      longitude: 28.8000
+      
+    - name: Поставы
+      latitude: 55.1167
+      longitude: 26.8333
+      
+    - name: Пружаны
+      latitude: 52.5500
+      longitude: 24.4500
+      
+    - name: Радошковичи
+      latitude: 54.1500
+      longitude: 27.2333
+      
+    - name: Речица
+      latitude: 52.3667
+      longitude: 30.4000
+      
+    - name: Рогачёв
+      latitude: 53.0833
+      longitude: 30.0500
+      pin-num: 1
+    - name: Россоны
+      latitude: 55.9000
+      longitude: 28.8167
+    - name: Руденск
+      latitude: 53.5833
+      longitude: 27.8667
+    - name: Ружаны
+      latitude: 52.8667
+      longitude: 24.9000
+    - name: Светлогорск
+      latitude: 52.6333
+      longitude: 29.7333
+    - name: Свирь
+      latitude: 54.8500
+      longitude: 26.4000
+    - name: Свислочь
+      latitude: 53.0333
+      longitude: 24.1000
+    - name: Сенно
+      latitude: 54.8167
+      longitude: 29.7000
+    - name: Скидель
+      latitude: 53.5833
+      longitude: 24.2500
+    - name: Славгород
+      latitude: 53.4333
+      longitude: 31.0000
+    - name: Слоним
+      latitude: 53.0833
+      longitude: 25.3167
+    - name: Слуцк
+      latitude: 53.0333
+      longitude: 27.5500
+    - name: Смолевичи
+      latitude: 54.0167
+      longitude: 28.0833
+    - name: Сморгонь
+      latitude: 54.4833
+      longitude: 26.4000
+    - name: Солигорск
+      latitude: 52.7833
+      longitude: 27.1500
+    - name: Сопоцкин
+      latitude: 53.8333
+      longitude: 23.6500
+    - name: Старобин
+      latitude: 52.7333
+      longitude: 27.4667
+    - name: Старые Дороги
+      latitude: 53.0333
+      longitude: 28.2667
+    - name: Столбцы
+      latitude: 53.4833
+      longitude: 26.7333
+    - name: Столин
+      latitude: 51.8833
+      longitude: 26.8500
+    - name: Стрешин
+      latitude: 52.7333
+      longitude: 30.1333
+    - name: Телеханы
+      latitude: 52.5167
+      longitude: 25.8500
+    - name: Толочин
+      latitude: 54.4167
+      longitude: 29.7000
+    - name: Туров
+      latitude: 52.0667
+      longitude: 27.7333
+    - name: Узда
+      latitude: 53.4667
+      longitude: 27.2167
+    - name: Уречье
+      latitude: 54.0167
+      longitude: 29.1333
+    - name: Ушачи
+      latitude: 55.1833
+      longitude: 28.6167
+    - name: Хойники
+      latitude: 51.9000
+      longitude: 29.9667
+    - name: Холопеничи
+      latitude: 54.5167
+      longitude: 28.9667
+    - name: Хотимск
+      latitude: 53.4167
+      longitude: 32.5833
+    - name: Чаусы
+      latitude: 53.8000
+      longitude: 30.9833
+    - name: Чашники
+      latitude: 54.8500
+      longitude: 29.1500
+    - name: Червень
+      latitude: 53.7000
+      longitude: 28.4333
+    - name: Чериков
+      latitude: 53.5667
+      longitude: 31.3833
+    - name: Чечерск
+      latitude: 52.9167
+      longitude: 30.9167
+    - name: Шарковщина
+      latitude: 55.3667
+      longitude: 27.4667
+    - name: Шерешёво
+      latitude: 52.5667
+      longitude: 24.2167
+    - name: Шклов
+      latitude: 54.2000
+      longitude: 30.2833
+    - name: Шумилино
+      latitude: 55.3000
+      longitude: 29.6167
+    - name: Щучин
+      latitude: 53.6000
+      longitude: 24.7333

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Карта Беларуси</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+<header class="page-header">
+    <div class="container text-center">
+        <h1 class="main-title">Интерактивная карта Беларуси</h1>
+        <p class="subtitle">Областные центры и города регионального подчинения</p>
+    </div>
+</header>
+<div class="canvas-container">
+    <canvas id="mapCanvas"></canvas>
+</div>
+
+<script th:src="@{/js/map.js}"></script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    window.cities = /*[[${cities}]]*/ [];
+    window.imagePath = /*[[@{/images/belarus.png}]]*/ '';
+    /*]]>*/
+</script>
+<div class="gradient-container">
+    <h1 class="gradient-title" th:text="${title_gradient}"></h1>
+
+    <div class="gradient-bar"
+         th:style="'background: linear-gradient(to right, ' + ${gradientStops} + ');'">
+    </div>
+
+    <div class="labels-container">
+        <div th:each="cv : ${gradientValues}"
+             class="gradient-label"
+             th:style="'left:' + ${cv.position} + '%'">
+            <div class="label-value" th:text="${cv.getRoundedValue()}"></div>
+        </div>
+    </div>
+</div>
+<div class="form-container">
+    <h1 class="form-title" th:text="${title_form}"></h1>
+    <form th:action="@{/submit}" method="post" class="radio-group">
+        <div th:each="option, iter : ${options}" class="radio-item">
+            <input type="radio"
+                   th:id="${'option' + iter.index}"
+                   th:name="selectedOption"
+                   th:value="${option.value}"
+                   th:checked="${option.value == selectedOption}"
+                   class="radio-input">
+            <label th:for="${'option' + iter.index}"
+                   class="radio-label"
+                   th:text="${option.label}"></label>
+        </div>
+
+        <button type="submit" class="submit-btn">Подтвердить выбор</button>
+    </form>
+</div>
+</body>
+</html>
