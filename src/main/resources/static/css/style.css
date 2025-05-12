@@ -21,8 +21,9 @@
 }
 
 .canvas-container {
-    max-width: 1200px;
-    margin: 20px auto;
+    width: 100%;
+    max-width: 100%;
+    margin: 20px 0;
     padding: 15px;
 }
 
@@ -126,6 +127,10 @@
 }
 
 .submit-btn {
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 2rem;
     padding: 1rem 2rem;
     background: #2196f3;
