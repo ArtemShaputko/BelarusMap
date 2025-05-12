@@ -56,8 +56,8 @@ cd belarus_map
 
 # Добавьте свой ключ
 echo API_KEY=<Your API key> > src/main/resources/secrets.properties
-# Для локального использования
-export API_KEY=<Your API key
+# Или так, только для локального использования
+export API_KEY=<Your API key>
 
 # Соберите проект
 mvn install package
