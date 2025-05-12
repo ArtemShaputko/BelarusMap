@@ -37,6 +37,7 @@
 
 ## Требования
 
+- ключ от сервиса [OpenWeatherMap](https://openweathermap.org/api)
 - Raspberry Pi (рекомендуется >= Raspberry Pi Zero 2W)
 - Java 17+
 - Maven
@@ -52,6 +53,11 @@
 # Склонируйте репозиторий
 git clone https://github.com/ArtemShaputko/BelarusMap.git
 cd belarus_map
+
+# Добавьте свой ключ
+echo API_KEY=<Your API key> > src/main/resources/secrets.properties
+# Для локального использования
+export API_KEY=<Your API key
 
 # Соберите проект
 mvn install package
